@@ -1,22 +1,31 @@
-import mysql from "mysql";
-import { ultimos, detalhes } from "./resumos.js";
+import { MongoClient, ServerApiVersion } from "mongodb";
 
-export const db = mysql.createConnection({
-  host: "18.225.37.30",
-  user: "root",
-  password: "uniquimica123password!",
-  database: "metabase",
+import dotenv from "dotenv";
+const process = dotenv.config().parsed;
+
+const uri = `mongodb+srv://${process.db_user}:${process.db_password}@clustersaopaulo.krzje8i.mongodb.net/?retryWrites=true&w=majority`;
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
 });
 
-export const useUltimos = async (res) => {
-  return await ultimos(res, db)
-}
+const run = async () => {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Conectado ao MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+};
 
-export const useDetalhes = async (res, body) => {
-  return await detalhes(res, db, body)
-}
-
-export const manterOn = async () => {
-  const sql = `SELECT produto_id FROM produtos LIMIT 0, 1`;
-  db.query(sql, () => {});
-}
+run()
+export { client };
