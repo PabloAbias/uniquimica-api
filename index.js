@@ -8,7 +8,7 @@ import { montarRotas as montarRotasEstoque } from "./controllers/estoque.js";
 const app = express();
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://curious-cannoli-12b779.netlify.app/"],
+  origin: ["http://localhost:5173", "https://curious-cannoli-12b779.netlify.app"],
 };
 
 // Usando o body-parser como middleware para lidar com JSON
