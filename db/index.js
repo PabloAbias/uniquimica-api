@@ -27,5 +27,5 @@ const run = async () => {
   }
 };
 
-run()
+run();
 export { client };

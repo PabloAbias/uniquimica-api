@@ -2,7 +2,6 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import { client as context } from "./db/index.js";
-import { getAll as estoqueGetAll } from "./db/estoque.js";
 import { montarRotas as montarRotasEstoque } from "./controllers/estoque.js";
 
 // Criando uma nova instância do Express
