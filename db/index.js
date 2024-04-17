@@ -3,9 +3,15 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from "dotenv";
 const process = dotenv.config().parsed;
 
-const uri = `mongodb+srv://${process.db_user}:${process.db_password}@clustersaopaulo.krzje8i.mongodb.net/?retryWrites=true&w=majority`;
+console.log("\n");
+console.log(dotenv);
+console.log("\n");
+console.log(dotenv.config());
+console.log("\n");
+console.log(process);
+console.log("\n");
 
-console.log(uri);
+const uri = `mongodb+srv://${process.db_user}:${process.db_password}@clustersaopaulo.krzje8i.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
