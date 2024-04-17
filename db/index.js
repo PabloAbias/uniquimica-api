@@ -3,13 +3,8 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from "dotenv";
 const process = dotenv.config().parsed;
 
-console.log("\n");
-console.log(dotenv);
-console.log("\n");
-console.log(dotenv.config());
-console.log("\n");
-console.log(process);
-console.log("\n");
+process.db_user = "admin"
+process.db_password = "nLMUXJwdg32mAIoh"
 
 const uri = `mongodb+srv://${process.db_user}:${process.db_password}@clustersaopaulo.krzje8i.mongodb.net/?retryWrites=true&w=majority`;
 
