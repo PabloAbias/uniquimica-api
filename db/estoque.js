@@ -17,8 +17,9 @@ export const getAll = async (context) => {
     let seisMesesAtrasStr = seisMesesAtras.toISOString().split("T")[0];
 
     const estoque = await collection
+      // .find({ })
       .find({ dtEntrega: { $gte: seisMesesAtrasStr, $lte: hojeStr } })
-      .sort({ dtEntrega: -1 })
+      .sort({ dtEntrega: 1 })
       .toArray();
 
     estoque.forEach((e) => {
