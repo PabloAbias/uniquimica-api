@@ -5,6 +5,8 @@ const process = dotenv.config().parsed;
 
 const uri = `mongodb+srv://${process.db_user}:${process.db_password}@clustersaopaulo.krzje8i.mongodb.net/?retryWrites=true&w=majority`;
 
+console.log(uri);
+
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
